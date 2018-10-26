@@ -37,7 +37,13 @@ fn main() -> io::Result<()> {
     };
 
     thread_pool.send_work(Box::new(work));
+
+    // Just to simulate stopping the thread pool.
+    break;
   }
+
+  // Wait for all tasks to finish.
+  thread_pool.shut_down();
 
   Ok(())
 }

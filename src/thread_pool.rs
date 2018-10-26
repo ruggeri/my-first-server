@@ -42,7 +42,7 @@ impl ThreadPool {
     self.managers.iter_mut().for_each(|m| { m.run(); });
   }
 
-  pub fn shut_down(&self) {
-    self.managers.iter().for_each(|m| { m.shut_down(); });
+  pub fn shut_down(&mut self) {
+    self.managers.iter_mut().for_each(|m| { m.shut_down(); });
   }
 }

@@ -1,6 +1,8 @@
 use crossbeam_channel as channel;
 
 type Work = dyn Fn() -> () + Send;
+// Kind of annoying that I can't use FnOnce, because it plays really
+// badly with Box. There is an unstable FnBox trait for this purpose...
 type WorkCompletionHandler = dyn Fn() -> () + Send;
 
 pub enum WorkMessage {
